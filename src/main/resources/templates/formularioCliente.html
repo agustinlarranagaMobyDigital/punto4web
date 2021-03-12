@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h2>Ingrese sus datos para registrarse</h2>
+
+<form method="post" th:action="@{/getFormularioCliente}" th:object="${cliente}">
+
+    <label> Nombre:</label>
+    <input type="text" name="nombre">       <br><br>
+
+    <label> Apellido:</label>
+    <input type="text" name="apellido">     <br><br>
+
+    <label> Dni:</label>
+    <input type="text" name="dni">          <br><br>
+
+    <label> Telefono:</label>
+    <input type="text" name="telefono">     <br><br>
+
+    <label> Consumidor final?</label><br>
+
+    <input name="consumidorfinal" value="true" id="true" type="radio"  onclick="ocultarImputsEmpresa()"> SI
+    <input name="consumidorfinal" value="false" id="false" type="radio" onclick="verImputsEmpresa()"> NO
+    <br><br>
+
+    <!--        PARTE DINAMICA QUE DEBE LLENAR SI ES EMPRESA         !-->
+    <div id="tipoEmpresa">
+        <label > Cuit:</label>
+        <input type="text" name="cuit">     <br><br>
+        <label > Cual es su condicion frente al iva?</label>
+        <input type="text" name="condicion_iva" > <br><br>
+    </div>
+
+    <input type="submit" value="Enviar">
+
+</form>
+
+    <!--      SU LOGICA PARA QUE FUNCIONE        !-->
+
+    <style type="text/css">
+        #tipoEmpresa{
+            display: none;
+        }
+    </style>
+
+    <script>
+        function verImputsEmpresa(){
+            document.getElementById("tipoEmpresa").style.display = 'block';
+        }
+        function ocultarImputsEmpresa(){
+            document.getElementById("tipoEmpresa").style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dni</th>
+            <th>Telefono</th>
+            <th>Consumidor final</th>
+            <th>Cuit</th>
+            <th>Condicion iva</th>
+        </tr>
+    </thead>
+<!--  th:text="${cliente.consumidor_final}">  -->
+    <tbody>
+        <tr th:each="cliente: ${lista}">
+            <td th:text="${cliente.id}"></td>
+            <td th:text="${cliente.nombre}"></td>
+            <td th:text="${cliente.apellido}"></td>
+            <td th:text="${cliente.dni}"></td>
+            <td th:text="${cliente.telefono}"></td>
+            <td th:if="${cliente.consumidor_final}"> Si </td>
+            <td th:if="${cliente.consumidor_final == false}"> No </td>
+
+            <td th:text="${cliente.getCuit()}"></td>
+            <td th:text="${cliente.getCondicion_iva()}"></td>
+        </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
